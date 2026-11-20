@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "rehab-scales": {
+      "command": "python",
+      "args": ["-m", "servers.stdio_server"],
+      "cwd": "${workspaceFolder}"
+    }
+  }
+}

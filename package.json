@@ -1,0 +1,16 @@
+{
+  "name": "homework_mcp",
+  "version": "1.0.0",
+  "description": "Практическая работа «Архитектура и реализация протокола Model Context Protocol (MCP) в клинических веб-приложениях: три паттерна интеграции инструментов».",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "medical-mcp": "^1.0.8"
+  }
+}
