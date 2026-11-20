@@ -8,11 +8,20 @@ JSON-RPC. Предметная область — шкалы медицинск�
 
 ## Быстрый старт
 
+Развёртывание одной командой (Windows, нужны Python 3.11/3.12 и Node.js 18+):
+
+```powershell
+powershell -ExecutionPolicy Bypass -File setup.ps1 -Run
+```
+
+Скрипт создаёт `.venv`, ставит Python- и npm-зависимости и с флагом `-Run`
+сразу поднимает веб-интерфейс. Ручной вариант:
+
 ```powershell
 python -m venv .venv
 .venv/Scripts/python.exe -m pip install -r requirements.txt
-npm install medical-mcp          # внешний сервер задания 3 (Node.js 18+)
-.venv/Scripts/python.exe -m streamlit run app.py   # веб-интерфейс, задание 4
+npm install medical-mcp          # внешний сервер задания 3
+.venv/Scripts/python.exe -m streamlit run app.py
 ```
 
 Сквозные проверки без UI: `python -m clients.stdio_client` (задание 1),
