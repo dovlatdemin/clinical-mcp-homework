@@ -149,7 +149,6 @@ def render_result(result: dict, notes: list[str]) -> None:
 # ---------------------------------------------------------------------------
 
 st.title("🩺 Клинические MCP-инструменты")
-st.caption("Все вычисления выполняют MCP-серверы, интерфейс ничего не считает сам.")
 
 if "packets" not in st.session_state:
     st.session_state.packets = []
