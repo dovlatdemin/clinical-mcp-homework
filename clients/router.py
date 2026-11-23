@@ -24,9 +24,9 @@ from clients.sse_client import SseMCPClient, sanitize
 from clients.stdio_client import StdioMCPClient, ToolError
 
 SOURCES = {
-    "stdio": "Локальный stdio (шкалы реабилитации)",
-    "sse": "Локальный сетевой :8000 (калькуляторы)",
-    "external": "Внешний сервис доказательной медицины",
+    "stdio": "Локальный stdio",
+    "sse": "Локальный сетевой :8000",
+    "external": "Внешний сервис",
 }
 
 
