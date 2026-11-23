@@ -76,11 +76,14 @@ homework_mcp/
 
 - запуск: `python -m servers.sse_server`; эндпоинты `GET /sse` и
   `POST /messages?session_id=...` на `http://127.0.0.1:8000`;
-- шесть инструментов с разбиением по нозологиям + мета-инструмент `list_scales`:
+- десять инструментов с разбиением по нозологиям + мета-инструмент `list_scales`:
   - общая терапия: `body_mass_index` (ИМТ);
   - кардиология: `cha2ds2_vasc` (риск инсульта при ФП, 0–9);
   - нефрология: `ckd_epi_egfr` (СКФ, CKD-EPI 2021), `cockcroft_gault`;
   - реаниматология: `glasgow_coma_scale` (GCS 3–15), `qsofa` (0–3);
+  - реабилитология: `modified_rankin_scale`, `rivermead_mobility_index`,
+    `rehab_routing_scale`, `barthel_index` — те же шкалы, что на stdio-сервере
+    (код переиспользуется из `servers/stdio_server.py`);
 - при выходе показателей за физиологические границы сервер возвращает
   результат со списком `warnings`, а не падает; компоненты шкал вне
   диапазона мягко приводятся к границам с пометкой.

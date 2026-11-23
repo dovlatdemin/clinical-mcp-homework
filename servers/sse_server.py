@@ -345,9 +345,35 @@ def list_scales() -> dict:
             "glasgow_coma_scale — GCS, 3-15; E 1-4, V 1-5, M 1-6",
             "qsofa — скрининг сепсиса, 0-3",
         ],
+        "реабилитология": [
+            "modified_rankin_scale — шкала Ранкина (mRS), 0-6",
+            "rivermead_mobility_index — индекс мобильности Ривмид, 0-15",
+            "rehab_routing_scale — шкала реабилитационной маршрутизации (ШРМ), 0-5",
+            "barthel_index — индекс Бартел, 0-100",
+        ],
     }
     log.info("list_scales")
     return {"nosologies": catalog}
+
+
+# ---------------------------------------------------------------------------
+# Реабилитология: те же шкалы, что на stdio-сервере (код переиспользуется)
+# ---------------------------------------------------------------------------
+
+from servers.stdio_server import (  # noqa: E402
+    barthel_index,
+    modified_rankin_scale,
+    rehab_routing_scale,
+    rivermead_mobility_index,
+)
+
+for _rehab_tool in (
+    modified_rankin_scale,
+    rivermead_mobility_index,
+    rehab_routing_scale,
+    barthel_index,
+):
+    mcp.tool()(_rehab_tool)
 
 
 if __name__ == "__main__":
