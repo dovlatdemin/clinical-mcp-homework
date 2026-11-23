@@ -27,9 +27,9 @@ from servers.stdio_server import BARTHEL_ITEMS, RIVERMEAD_ITEMS
 st.set_page_config(page_title="Клинические MCP-инструменты", page_icon="🩺", layout="wide")
 
 RISK_STYLE = {
-    "green": ("🟢 Низкий риск / благоприятный результат", st.success),
-    "yellow": ("🟡 Промежуточный риск — требуется внимание", st.warning),
-    "red": ("🔴 Высокий риск — требуется вмешательство", st.error),
+    "green": ("🟢 Низкий риск", st.success),
+    "yellow": ("🟡 Промежуточный риск", st.warning),
+    "red": ("🔴 Высокий риск", st.error),
 }
 
 
@@ -102,7 +102,7 @@ def _doi_link(source: str) -> str | None:
 def render_result(result: dict, notes: list[str]) -> None:
     # Внешний сервис: текстовый контент (markdown)
     if "content" in result and isinstance(result["content"], list):
-        st.markdown("### Результат внешнего сервиса")
+        st.markdown("### Результат")
         for block in result["content"]:
             st.markdown(block)
         return
@@ -127,7 +127,7 @@ def render_result(result: dict, notes: list[str]) -> None:
     for warning in result.get("warnings", []):
         st.warning(f"⚠️ {warning}")
     for note in notes:
-        st.caption(f"🧹 sanitizer: {note}")
+        st.caption(f"sanitizer: {note}")
 
     if result.get("components"):
         st.markdown("**Компоненты расчёта**")
@@ -197,15 +197,15 @@ if submitted:
     except ToolError as error:
         st.error(f"Инструмент отклонил ввод: {error}")
     except Exception as error:
-        st.error(f"Неожиданная ошибка (перехвачена, приложение работает): {error}")
+        st.error(f"Ошибка (перехвачена): {error}")
 
 # ---------------------------------------------------------------------------
 # Инспектор протокола MCP
 # ---------------------------------------------------------------------------
 
-with st.expander(f"🛠 Инспектор протокола MCP — пакетов: {len(st.session_state.packets)}"):
+with st.expander(f"🛠 Инспектор JSON-RPC ({len(st.session_state.packets)})"):
     if not st.session_state.packets:
-        st.caption("Выполните расчёт — здесь появятся сырые JSON-RPC пакеты.")
+        st.caption("Выполните расчёт — здесь появятся сырые пакеты.")
     for i, pair in enumerate(reversed(st.session_state.packets[-5:])):
         n = len(st.session_state.packets) - i
         col_req, col_res = st.columns(2)

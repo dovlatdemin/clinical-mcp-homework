@@ -91,10 +91,10 @@ def sanitize(schema: dict, raw: dict) -> tuple[dict, list[str]]:
         if value is None or (isinstance(value, str) and not value.strip()):
             if "default" in spec:
                 clean[name] = spec["default"]
-                notes.append(f"{name}: подставлено значение схемы по умолчанию ({spec['default']})")
+                notes.append(f"{name}: умолчание схемы ({spec['default']})")
             elif name in SMART_DEFAULTS:
                 clean[name] = SMART_DEFAULTS[name]
-                notes.append(f"{name}: подставлено безопасное значение по умолчанию ({SMART_DEFAULTS[name]})")
+                notes.append(f"{name}: безопасное умолчание ({SMART_DEFAULTS[name]})")
             elif name in required:
                 raise ValueError(f"{name}: обязательное поле не заполнено")
             continue
